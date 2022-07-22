@@ -1,0 +1,78 @@
+<div id="filters" class="row filters text-white p-2 collapse">
+    
+    <form class="row" action="/flats/filter/" method="get">
+        <!-- Flat type -->
+        <div class="col-12 col-xl-3 col-sm-6 mt-2">
+            <div class="row mb-2">
+                <strong>Flat type</strong>
+            </div>
+            <% for(let q = 1; q < 5; q++){ %> 
+                <div class="row">
+                    <div class="col-6 my-1 d-flex align-items-center justify-content-center flex-column">
+                        <div class="form-check">
+                        <input class="form-check-input" name="kk" value="<%= q %>+kk" type="checkbox" id="<%= q %>kk">
+                        <label class="form-check-label checkbox-hover" for="<%= q %>kk"><%= q %> + kk </label>
+                        </div>
+                    </div>
+                    <div class="col-6 my-1 d-flex align-items-center justify-content-center flex-column">
+                        <div class="form-check">
+                        <input class="form-check-input" name="add" value="<%= q %>+1" type="checkbox" id="<%= q %>+1">
+                        <label class="form-check-label checkbox-hover" for="<%= q %>+1"><%= q %> + 1 </label>
+                        </div>
+                    </div>
+                </div>
+            <% } %> 
+        </div>
+
+        <!-- Flat price -->
+        <div class="col-12 col-xl-3 col-sm-6 mt-2">
+            <div class="row mb-2">
+                <strong>Price</strong>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col d-flex align-items-center justify-content-center flex-column">
+                            <input class="w-75 form-control m-1" type="number" id="fromprice" name="fromprice" placeholder="From CZK">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex align-items-center justify-content-center flex-column">
+                            <input class="w-75 form-control m-1" type="number" id="toprice" name="toprice" placeholder="To CZK">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Surface -->
+        <div class="col-12 col-xl-3 col-sm-6 mt-2">
+            <div class="row mb-2">
+                <strong>Minimal surface area</strong>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <input class="w-75 form-control" type="number" name="surface" min="0" max="500" placeholder="Surface area m2">
+                </div>
+            </div>
+            <div class="row mb-2">
+                <strong>Number of results</strong>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <input class="w-75 form-control" type="number" name="limit" min="0" max="500" placeholder="Restrict results..">
+                </div>
+            </div>
+        </div>
+
+        <!-- Results limitation-->
+        <div class="col-12 col-xl-3 col-sm-6 mt-2">
+            <div class="row m-4">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                    <button class="btn btn-primary w-75" type="submit">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div> 

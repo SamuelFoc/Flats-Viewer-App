@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  node_ui:
+    container_name: node_ui
+    image: node_ui:0.2.0
+    build: 
+      context: ./ui
+    ports:
+      - 4000:4000
+    environment:
+      - BASE_URL=http://node_api:3000
+      - PORT=4000
+    depends_on:
+      - node_api
+  node_api:
+    container_name: node_api
+    image: node_api:0.2.0
+    build: 
+      context: ./api
+    ports:
+      - 3000:3000
+    environment:
+      - EXTERNAL_PORT=3000
+      - PGDATABASE=flats_db
+      - PGUSER=flats
+      - PGPASSWORD=12345
+      - PGHOST=node_db 
+    depends_on:
+      - node_db
+  node_db:
+    container_name: node_db
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=flats
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=flats_db
+    volumes:
+      - ./data:/var/lib/postgresql/database/pgdata
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data: {}

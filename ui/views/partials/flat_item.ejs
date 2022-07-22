@@ -1,0 +1,32 @@
+<% flats.data.forEach(flat => {%>
+    <div class="row mb-5 mt-5 item shadow border">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+            <img src="<%= flat.img_href %>" alt="Image not found" onerror="this.src='https://coamplifi.com/wp-content/uploads/2021/08/coamplifi_wfh-750x550.jpg'" class="image">
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-9">
+            <div class="row">
+                <strong class="title fs-3 m-1 d-flex">
+                    To rent apartment <p class="mx-2 text-secondary"><i class="fas fa-home mx-2"></i><%= flat.type %> | <i class="fas fa-ruler mx-2"></i><%= flat.surface %> m<sup>2</sup></p>
+                </strong>
+                <hr class="divider mt-1">
+            </div>
+            <div class="row">
+                <div class="col-8 d-flex flex-column info">
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fas fa-money-bill sub-title me-2"></i>
+                        <p class="text fs-5 m-2 text"> <%= flat.price %> Kč <i class="text-muted fs-6">monthly</i></p>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-center">
+                        <i class="fas fa-map-pin sub-title ms-2 me-2"></i>
+                        <p class="text fs-6 m-2 text"><%= flat.address %> </p>
+                    </div>
+                </div>
+                <div class="col-4 d-flex align-items-center justify-content-end">
+                    <a href="<%= flat.flat_href %>">
+                        <button class="btn btn-primary">Go to <strong>SREALITY.CZ</strong></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+<% }) %> 
